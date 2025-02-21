@@ -2,14 +2,14 @@
 
 🚀 A fully functional Coursera-like platform built using **Node.js, Express, and MongoDB**.  
 
-##📌 Overview  
+## 📌 Overview  
 This project is a **graduation project for the ITI MEARN track**, designed to replicate key features of Coursera, including:  
 - User authentication & role-based access control (RBAC)  
 - Course management (upload, edit, and delete)  
 - Secure video streaming  
 - Payment integration with **Stripe**    
 
-##💻 Tech Stack  
+## 💻 Tech Stack  
 - **Backend:** Node.js, Express.js  
 - **Database:** MongoDB (Mongoose ORM)  
 - **Authentication:** JWT, Refresh Tokens, Secure Cookies  
