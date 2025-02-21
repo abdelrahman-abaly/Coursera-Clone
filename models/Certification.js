@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// Define the Certification schema
+
 const CertificationSchema = new mongoose.Schema(
   {
     title: {
