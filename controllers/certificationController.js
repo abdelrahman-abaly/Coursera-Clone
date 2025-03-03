@@ -1,138 +1,61 @@
+const asyncHandler = require("express-async-handler");
+const AppError = require("../Utils/appError");
 const Certification = require('../models/Certification');
-const mongoose = require('mongoose');
-const Course = require('../models/Course');
-const User = require('../models/user');
+const factory = require('./handlerFactory');
 
+// Create certification
+exports.createCertification = factory.createOne(Certification);
 
-exports.createCertification = async (req, res, next) => {
-  try {
-    const { title, description, courses, enrolledUsers } = req.body;
+// Get all certifications
+exports.getAllCertifications = factory.getAll(Certification, 'Certification');
 
-    if (!Array.isArray(courses) || !courses.every((id) => mongoose.Types.ObjectId.isValid(id))) {
-      return res.status(400).json({ error: 'Invalid course IDs' });
-    }
-    if (!Array.isArray(enrolledUsers) || !enrolledUsers.every((id) => mongoose.Types.ObjectId.isValid(id))) {
-      return res.status(400).json({ error: 'Invalid user IDs' });
-    }
+// Get certification by ID
+exports.getCertificationById = factory.getOne(Certification, ['courses', 'enrolledUsers']);
 
-    const certification = new Certification({
-      title,
-      description,
-      courses,
-      enrolledUsers,
-    });
+// Update certification
+exports.updateCertification = factory.updateOne(Certification);
 
-    await certification.save();
-    res.status(201).json(certification);
-  } catch (error) {
-    next(error); 
+// Delete certification
+exports.deleteCertification = factory.deleteOne(Certification);
+
+// Enroll user
+exports.enrollUser = asyncHandler(async (req, res, next) => {
+  const userId = req.body.userId;
+
+  if (!userId) {
+    return next(new AppError('Invalid user ID', 400));
   }
-};
 
-exports.getAllCertifications = async (req, res, next) => {
-  try {
-    const certifications = await Certification.find()
-      .populate('courses') 
-      .populate('enrolledUsers'); 
+  const certification = await Certification.findByIdAndUpdate(
+    req.params.id,
+    { $addToSet: { enrolledUsers: userId } },
+    { new: true }
+  ).populate('enrolledUsers');
 
-    res.status(200).json(certifications);
-  } catch (error) {
-    next(error); 
+  if (!certification) {
+    return next(new AppError('Certification not found', 404));
   }
-};
 
-exports.getCertificationById = async (req, res, next) => {
-  try {
-    const certification = await Certification.findById(req.params.id)
-      .populate('courses') 
-      .populate('enrolledUsers');
+  res.status(200).json({ data: certification });
+});
 
-    if (!certification) {
-      return res.status(404).json({ error: 'Certification not found' });
-    }
+// Unenroll user
+exports.unenrollUser = asyncHandler(async (req, res, next) => {
+  const userId = req.body.userId;
 
-    res.status(200).json(certification);
-  } catch (error) {
-    next(error); 
+  if (!userId) {
+    return next(new AppError('Invalid user ID', 400));
   }
-};
 
-exports.updateCertification = async (req, res, next) => {
-  try {
-    const updatedCertification = await Certification.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true, runValidators: true } 
-    );
+  const certification = await Certification.findByIdAndUpdate(
+    req.params.id,
+    { $pull: { enrolledUsers: userId } },
+    { new: true }
+  ).populate('enrolledUsers');
 
-    if (!updatedCertification) {
-      return res.status(404).json({ error: 'Certification not found' });
-    }
-
-    res.status(200).json(updatedCertification);
-  } catch (error) {
-    next(error); 
+  if (!certification) {
+    return next(new AppError('Certification not found', 404));
   }
-};
 
-exports.deleteCertification = async (req, res, next) => {
-  try {
-    const deletedCertification = await Certification.findByIdAndDelete(req.params.id);
-
-    if (!deletedCertification) {
-      return res.status(404).json({ error: 'Certification not found' });
-    }
-
-    res.status(200).json({ message: 'Certification deleted successfully' });
-  } catch (error) {
-    next(error); 
-  }
-};
-
-exports.enrollUser = async (req, res, next) => {
-  try {
-    const userId = req.body.userId;
-
-    if (!mongoose.Types.ObjectId.isValid(userId)) {
-      return res.status(400).json({ error: 'Invalid user ID' });
-    }
-
-    const certification = await Certification.findByIdAndUpdate(
-      req.params.id,
-      { $addToSet: { enrolledUsers: userId } }, 
-      { new: true }
-    ).populate('enrolledUsers'); 
-
-    if (!certification) {
-      return res.status(404).json({ error: 'Certification not found' });
-    }
-
-    res.status(200).json(certification);
-  } catch (error) {
-    next(error); 
-  }
-};
-
-exports.unenrollUser = async (req, res, next) => {
-  try {
-    const userId = req.body.userId;
-
-    if (!mongoose.Types.ObjectId.isValid(userId)) {
-      return res.status(400).json({ error: 'Invalid user ID' });
-    }
-
-    const certification = await Certification.findByIdAndUpdate(
-      req.params.id,
-      { $pull: { enrolledUsers: userId } }, 
-      { new: true }
-    ).populate('enrolledUsers'); 
-
-    if (!certification) {
-      return res.status(404).json({ error: 'Certification not found' });
-    }
-
-    res.status(200).json(certification);
-  } catch (error) {
-    next(error); 
-  }
-};
+  res.status(200).json({ data: certification });
+});

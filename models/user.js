@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const crypto = require('crypto');
 
 const userSchema = mongoose.Schema({
   username: {
@@ -31,21 +32,92 @@ const userSchema = mongoose.Schema({
     unique: true,
     validate: {
       validator: function(email) {
-        return /^[a-zA-Z]{2,10}[0-9]{0,5}(@)(gmail|yahoo|outlook|hotmail)(.com)$/.test(email);
+        return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
       },
-      message :(obj) => `${obj.value} is not a valid email address`
+      message: props => `${props.value} is not a valid email address`
     }
   },
+  role: {
+    type: String,
+    enum: ['user', 'instructor', 'admin'],
+    default: 'user'
+  },
+  isEmailVerified: {
+    type: Boolean,
+    default: false
+  },
+  emailVerificationToken: String,
+  emailVerificationExpires: Date,
+  resetPasswordToken: String,
+  resetPasswordExpires: Date,
+  lastLogin: Date,
+  isActive: {
+    type: Boolean,
+    default: true
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now
+  }
 });
 
-userSchema.pre('save', async function(next){
-  let salt = await bcrypt.genSalt(10);
-  let hashedPassword = await bcrypt.hash(this.password, salt);
+// Password hashing middleware
+userSchema.pre('save', async function(next) {
+  // Only hash the password if it's modified (or new)
+  if (!this.isModified('password')) return next();
+  
+  try {
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
 
-  this.password = hashedPassword;
+// Update the timestamp before saving
+userSchema.pre('save', function(next) {
+  this.updatedAt = Date.now();
   next();
-},{Collection: 'User'});
+});
 
-const usersModel = mongoose.model('User', userSchema);
+// Compare password method
+userSchema.methods.comparePassword = async function(candidatePassword) {
+  return await bcrypt.compare(candidatePassword, this.password);
+};
 
-module.exports = usersModel;
+// Generate email verification token
+userSchema.methods.generateEmailVerificationToken = function() {
+  const verificationToken = crypto.randomBytes(32).toString('hex');
+  
+  this.emailVerificationToken = crypto
+    .createHash('sha256')
+    .update(verificationToken)
+    .digest('hex');
+    
+  this.emailVerificationExpires = Date.now() + 24 * 60 * 60 * 1000; // 24 hours
+  
+  return verificationToken;
+};
+
+// Generate password reset token
+userSchema.methods.generatePasswordResetToken = function() {
+  const resetToken = crypto.randomBytes(32).toString('hex');
+  
+  this.resetPasswordToken = crypto
+    .createHash('sha256')
+    .update(resetToken)
+    .digest('hex');
+    
+  this.resetPasswordExpires = Date.now() + 10 * 60 * 1000; // 10 minutes
+  
+  return resetToken;
+};
+
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;

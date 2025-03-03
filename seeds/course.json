@@ -1,0 +1,277 @@
+[
+    {
+        "title": "Course 1: Advanced Topic",
+        "description": "This is a detailed description of course 1.",
+        "instructor": "60d21b4617d0d8992e610c85",
+        "price": 550,
+        "category": "Category 2",
+        "modules": [
+            "60d21b4917d0d8992e610c91",
+            "60d21b4b17d0d8992e610c92"
+        ]
+    },
+    {
+        "title": "Course 2: Advanced Topic",
+        "description": "This is a detailed description of course 2.",
+        "instructor": "60d21b4627d0d8992e610c85",
+        "price": 600,
+        "category": "Category 3",
+        "modules": [
+            "60d21b4927d0d8992e610c91",
+            "60d21b4b27d0d8992e610c92"
+        ]
+    },
+    {
+        "title": "Course 3: Advanced Topic",
+        "description": "This is a detailed description of course 3.",
+        "instructor": "60d21b4637d0d8992e610c85",
+        "price": 650,
+        "category": "Category 4",
+        "modules": [
+            "60d21b4937d0d8992e610c91",
+            "60d21b4b37d0d8992e610c92"
+        ]
+    },
+    {
+        "title": "Course 4: Advanced Topic",
+        "description": "This is a detailed description of course 4.",
+        "instructor": "60d21b4647d0d8992e610c85",
+        "price": 700,
+        "category": "Category 5",
+        "modules": [
+            "60d21b4947d0d8992e610c91",
+            "60d21b4b47d0d8992e610c92"
+        ]
+    },
+    {
+        "title": "Course 5: Advanced Topic",
+        "description": "This is a detailed description of course 5.",
+        "instructor": "60d21b4657d0d8992e610c85",
+        "price": 750,
+        "category": "Category 1",
+        "modules": [
+            "60d21b4957d0d8992e610c91",
+            "60d21b4b57d0d8992e610c92"
+        ]
+    },
+    {
+        "title": "Course 6: Advanced Topic",
+        "description": "This is a detailed description of course 6.",
+        "instructor": "60d21b4667d0d8992e610c85",
+        "price": 800,
+        "category": "Category 2",
+        "modules": [
+            "60d21b4967d0d8992e610c91",
+            "60d21b4b67d0d8992e610c92"
+        ]
+    },
+    {
+        "title": "Course 7: Advanced Topic",
+        "description": "This is a detailed description of course 7.",
+        "instructor": "60d21b4677d0d8992e610c85",
+        "price": 850,
+        "category": "Category 3",
+        "modules": [
+            "60d21b4977d0d8992e610c91",
+            "60d21b4b77d0d8992e610c92"
+        ]
+    },
+    {
+        "title": "Course 8: Advanced Topic",
+        "description": "This is a detailed description of course 8.",
+        "instructor": "60d21b4687d0d8992e610c85",
+        "price": 900,
+        "category": "Category 4",
+        "modules": [
+            "60d21b4987d0d8992e610c91",
+            "60d21b4b87d0d8992e610c92"
+        ]
+    },
+    {
+        "title": "Course 9: Advanced Topic",
+        "description": "This is a detailed description of course 9.",
+        "instructor": "60d21b4697d0d8992e610c85",
+        "price": 950,
+        "category": "Category 5",
+        "modules": [
+            "60d21b4997d0d8992e610c91",
+            "60d21b4b97d0d8992e610c92"
+        ]
+    },
+    {
+        "title": "Course 10: Advanced Topic",
+        "description": "This is a detailed description of course 10.",
+        "instructor": "60d21b46107d0d8992e610c85",
+        "price": 1000,
+        "category": "Category 1",
+        "modules": [
+            "60d21b49107d0d8992e610c91",
+            "60d21b4b107d0d8992e610c92"
+        ]
+    },
+    {
+        "title": "Course 11: Advanced Topic",
+        "description": "This is a detailed description of course 11.",
+        "instructor": "60d21b46117d0d8992e610c85",
+        "price": 1050,
+        "category": "Category 2",
+        "modules": [
+            "60d21b49117d0d8992e610c91",
+            "60d21b4b117d0d8992e610c92"
+        ]
+    },
+    {
+        "title": "Course 12: Advanced Topic",
+        "description": "This is a detailed description of course 12.",
+        "instructor": "60d21b46127d0d8992e610c85",
+        "price": 1100,
+        "category": "Category 3",
+        "modules": [
+            "60d21b49127d0d8992e610c91",
+            "60d21b4b127d0d8992e610c92"
+        ]
+    },
+    {
+        "title": "Course 13: Advanced Topic",
+        "description": "This is a detailed description of course 13.",
+        "instructor": "60d21b46137d0d8992e610c85",
+        "price": 1150,
+        "category": "Category 4",
+        "modules": [
+            "60d21b49137d0d8992e610c91",
+            "60d21b4b137d0d8992e610c92"
+        ]
+    },
+    {
+        "title": "Course 14: Advanced Topic",
+        "description": "This is a detailed description of course 14.",
+        "instructor": "60d21b46147d0d8992e610c85",
+        "price": 1200,
+        "category": "Category 5",
+        "modules": [
+            "60d21b49147d0d8992e610c91",
+            "60d21b4b147d0d8992e610c92"
+        ]
+    },
+    {
+        "title": "Course 15: Advanced Topic",
+        "description": "This is a detailed description of course 15.",
+        "instructor": "60d21b46157d0d8992e610c85",
+        "price": 1250,
+        "category": "Category 1",
+        "modules": [
+            "60d21b49157d0d8992e610c91",
+            "60d21b4b157d0d8992e610c92"
+        ]
+    },
+    {
+        "title": "Course 16: Advanced Topic",
+        "description": "This is a detailed description of course 16.",
+        "instructor": "60d21b46167d0d8992e610c85",
+        "price": 1300,
+        "category": "Category 2",
+        "modules": [
+            "60d21b49167d0d8992e610c91",
+            "60d21b4b167d0d8992e610c92"
+        ]
+    },
+    {
+        "title": "Course 17: Advanced Topic",
+        "description": "This is a detailed description of course 17.",
+        "instructor": "60d21b46177d0d8992e610c85",
+        "price": 1350,
+        "category": "Category 3",
+        "modules": [
+            "60d21b49177d0d8992e610c91",
+            "60d21b4b177d0d8992e610c92"
+        ]
+    },
+    {
+        "title": "Course 18: Advanced Topic",
+        "description": "This is a detailed description of course 18.",
+        "instructor": "60d21b46187d0d8992e610c85",
+        "price": 1400,
+        "category": "Category 4",
+        "modules": [
+            "60d21b49187d0d8992e610c91",
+            "60d21b4b187d0d8992e610c92"
+        ]
+    },
+    {
+        "title": "Course 19: Advanced Topic",
+        "description": "This is a detailed description of course 19.",
+        "instructor": "60d21b46197d0d8992e610c85",
+        "price": 1450,
+        "category": "Category 5",
+        "modules": [
+            "60d21b49197d0d8992e610c91",
+            "60d21b4b197d0d8992e610c92"
+        ]
+    },
+    {
+        "title": "Course 20: Advanced Topic",
+        "description": "This is a detailed description of course 20.",
+        "instructor": "60d21b46207d0d8992e610c85",
+        "price": 1500,
+        "category": "Category 1",
+        "modules": [
+            "60d21b49207d0d8992e610c91",
+            "60d21b4b207d0d8992e610c92"
+        ]
+    },
+    {
+        "title": "Course 21: Advanced Topic",
+        "description": "This is a detailed description of course 21.",
+        "instructor": "60d21b46217d0d8992e610c85",
+        "price": 1550,
+        "category": "Category 2",
+        "modules": [
+            "60d21b49217d0d8992e610c91",
+            "60d21b4b217d0d8992e610c92"
+        ]
+    },
+    {
+        "title": "Course 22: Advanced Topic",
+        "description": "This is a detailed description of course 22.",
+        "instructor": "60d21b46227d0d8992e610c85",
+        "price": 1600,
+        "category": "Category 3",
+        "modules": [
+            "60d21b49227d0d8992e610c91",
+            "60d21b4b227d0d8992e610c92"
+        ]
+    },
+    {
+        "title": "Course 23: Advanced Topic",
+        "description": "This is a detailed description of course 23.",
+        "instructor": "60d21b46237d0d8992e610c85",
+        "price": 1650,
+        "category": "Category 4",
+        "modules": [
+            "60d21b49237d0d8992e610c91",
+            "60d21b4b237d0d8992e610c92"
+        ]
+    },
+    {
+        "title": "Course 24: Advanced Topic",
+        "description": "This is a detailed description of course 24.",
+        "instructor": "60d21b46247d0d8992e610c85",
+        "price": 1700,
+        "category": "Category 5",
+        "modules": [
+            "60d21b49247d0d8992e610c91",
+            "60d21b4b247d0d8992e610c92"
+        ]
+    },
+    {
+        "title": "Course 25: Advanced Topic",
+        "description": "This is a detailed description of course 25.",
+        "instructor": "60d21b46257d0d8992e610c85",
+        "price": 1750,
+        "category": "Category 1",
+        "modules": [
+            "60d21b49257d0d8992e610c91",
+            "60d21b4b257d0d8992e610c92"
+        ]
+    }
+]
